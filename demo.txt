@@ -2,4 +2,5 @@ React E-Commerce
 1. Project Setup
 2. ( React Router, TailwindCSS, daisyUI ) install
 3. Pages: Home, Product (ProductDetails), Contact, Login, Singup
-4. Home: Banner, 
+4. Home: Banner, AboutUs
+5. 
