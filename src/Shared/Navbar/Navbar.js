@@ -1,7 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { BsFillCartCheckFill } from 'react-icons/bs';
+import app from '../../firebase/firebase.config';
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [userNaame, setUserName] = useState('')
+  const [user, setUser] = useState('')
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const userName = user.displayName;
+      setUser(user)
+      setUserName(userName)
+    } else {
+
+    }
+  });
+
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        console.log('Logout')
+      }).catch((error) => {
+
+      });
+  }
+
   return (
     <div>
       <div className="navbar bg-base-200">
@@ -33,7 +60,24 @@ const Navbar = () => {
 
 
         <div className="navbar-end  mx-5">
-          <a className="btn bg-base-content text-white">Login</a>
+
+          <div className=" border-2 border-black  rounded-2xl p-3">
+            <BsFillCartCheckFill className='h-6 w-6 mx-5' />
+          </div>
+
+          <div className="">
+            Hi, {userNaame}
+          </div>
+
+          {
+            user ? <>
+              <button onClick={handleLogOut} className="btn bg-base-content text-white">Logout</button>
+            </> : <>
+              <Link to='/login' className="btn bg-base-content text-white">Login</Link>
+            </>
+          }
+
+
         </div>
 
 

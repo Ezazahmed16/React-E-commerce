@@ -1,27 +1,26 @@
-import React from 'react'
-import Categories from './Categories/Categories'
-import Product from './Product/Product'
+import React, { useState } from 'react';
+import Categories from '../Products/Categories/Categories';
+import Product from '../Products/Product/Product';
 
 const Products = () => {
-  return (
-    <div>
-      <div className="grid grid-cols-4 gap-5">
+    const [select, setSelect] = useState('')
 
+    return (
+        <div>
+            <div className="grid grid-cols-4 gap-5">
+                <div className="">
+                    {/* child  */}
+                    <Categories setSelect={setSelect} />
 
-        <div className="">
-          <Categories />
+                    
+                </div>
+                <div className="col-span-3">
+                    {/* child  */}
+                    <Product setSelect={select} />
+                </div>
+            </div>
         </div>
+    );
+};
 
-
-        <div className="col-span-3">
-          
-          <Product />
-
-        </div>
-
-      </div>
-    </div>
-  )
-}
-
-export default Products
+export default Products;

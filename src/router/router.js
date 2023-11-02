@@ -5,6 +5,9 @@ import Products from "../page/Products/Products";
 import Main from "../Layout/Main";
 import ProductDetails from "../page/Products/Product/ProductDetails";
 import ErrorElement from "../Shared/ErrorElement/ErrorElement";
+import Login from "../Shared/Login/Login";
+import Singup from "../Shared/Singup/Singup";
+import Order from "../page/Order/Order";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +28,10 @@ const router = createBrowserRouter([
                 element: <Products />,
             },
             {
+                path: '/products/category/:category',
+                element: <Products />,
+            },
+            {
                 path: "/products/product-details/:id",
                 element: <ProductDetails />,
                 loader: async ({ params }) => {
@@ -35,6 +42,18 @@ const router = createBrowserRouter([
                 path: "/contact",
                 element: <ContactUs />,
             },
+            {
+                path: '/login',
+                element: <Login />
+            },
+            {
+                path: '/singup',
+                element: <Singup />
+            },
+            {
+                path: '/order',
+                element: <Order />
+            }
         ]
     },
 

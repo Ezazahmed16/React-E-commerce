@@ -1,12 +1,10 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 
 const ProductDetails = () => {
 
     const productDetails = useLoaderData()
 
-
-    console.log(productDetails)
     return (
         <div className='p-10 my-5'>
 
@@ -31,8 +29,11 @@ const ProductDetails = () => {
                         </div>
 
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Buy Now</button>
+                            <Link to='/order'>
+                                <button className="btn btn-primary">Buy Now</button>
+                            </Link>
                         </div>
+
                     </div>
 
                 </div>
