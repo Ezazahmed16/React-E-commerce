@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, getRedirectResult, signInWithPopup, updateProfile, } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, getRedirectResult, sendEmailVerification, signInWithPopup, updateProfile, } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 import toast from 'react-hot-toast';
 
@@ -28,13 +28,17 @@ const Singup = () => {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
+                console.log(result)
 
                 updateProfile(auth.currentUser, {
                     displayName: displayName,
                     photoURL: photoURL
                 })
                 .then(result => {
-                    toast.success('User Create Success')
+                    sendEmailVerification(auth.currentUser)
+                    .then(result => {
+                        toast.success('Link send to you mail address')
+                    })
                 })
                 .catch(error => {
                     console.log(error.message)

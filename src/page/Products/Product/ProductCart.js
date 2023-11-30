@@ -25,7 +25,7 @@ const ProductCart = ({ product }) => {
                         </div>
 
                         <div className="card-actions">
-                            <Link to={`/products/product-details/${product.id}`}>
+                            <Link to={`/products/product-details/${product._id}`}>
                                 <button className="btn btn-primary">
                                     <EyeIcon className='h-6 w-6' />
                                     View

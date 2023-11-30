@@ -8,6 +8,7 @@ import { useState } from 'react';
 const Navbar = () => {
   const [userNaame, setUserName] = useState('')
   const [user, setUser] = useState('')
+  
   const auth = getAuth(app);
 
   onAuthStateChanged(auth, (user) => {
@@ -28,6 +29,8 @@ const Navbar = () => {
 
       });
   }
+
+  console.log(user)
 
   return (
     <div>

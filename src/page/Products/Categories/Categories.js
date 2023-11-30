@@ -5,13 +5,14 @@ const Categories = ({ setSelect }) => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products/categories')
+        fetch('http://localhost:5000/categories')
             .then((res) => res.json())
             .then((data) => setCategories(data))
             .catch((error) => console.error('Error fetching categories:', error));
     }, [categories]);
 
     const handleCategorySelect = (category) => {
+        console.log(category)
         setSelect(category);
     };
 
@@ -22,8 +23,8 @@ const Categories = ({ setSelect }) => {
 
                 {categories.map((category) => (
                     <Link to={`/products/category/${category}`}>
-                        <button key={category} onClick={() => handleCategorySelect(category)} className="text-xl">
-                            {category}
+                        <button key={category.id} onClick={() => handleCategorySelect(category.category)} className="text-xl">
+                            {category.category}
                         </button>
                     </Link>
                 ))}

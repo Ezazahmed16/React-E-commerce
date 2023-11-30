@@ -1,13 +1,16 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import app from '../../firebase/firebase.config';
 import toast from 'react-hot-toast';
 
 
 const auth = getAuth(app);
+
 const Login = () => {
+  
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,13 +23,14 @@ const Login = () => {
     const password = data.password
 
     signInWithEmailAndPassword(auth, email, password)
-    .then(result => {
-      console.log(result)
-      toast.success('Auth Success')
-    })
-    .catch(error => {
-      toast.error('Something is wrong. please check email and password.')
-    })
+      .then(result => {
+        console.log(result)
+        navigate('/')
+        toast.success('Auth Success')
+      })
+      .catch(error => {
+        toast.error('Something is wrong. please check email and password.')
+      })
 
   };
 

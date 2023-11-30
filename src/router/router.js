@@ -8,6 +8,7 @@ import ErrorElement from "../Shared/ErrorElement/ErrorElement";
 import Login from "../Shared/Login/Login";
 import Singup from "../Shared/Singup/Singup";
 import Order from "../page/Order/Order";
+import AddProducts from "../page/Dashboard/AddProducts";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
                 path: "/products/product-details/:id",
                 element: <ProductDetails />,
                 loader: async ({ params }) => {
-                    return fetch(`https://fakestoreapi.com/products/${params.id}`);
+                    return fetch(`http://localhost:5000/products/${params.id}`);
                 },
             },
             {
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
             }
         ]
     },
+
+    {
+        path: '/dashboard/add-products',
+        element: <AddProducts />
+    }
 
 ]);
 

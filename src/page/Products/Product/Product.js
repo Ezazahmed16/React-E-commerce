@@ -8,9 +8,9 @@ const Product = ({ setSelect }) => {
     const itemPerpage = 6;
 
     useEffect(() => {
-        let api = 'https://fakestoreapi.com/products';
+        let api = 'http://localhost:5000/products';
         if (setSelect) {
-            api = `https://fakestoreapi.com/products/category/${setSelect}`;
+            api = `http://localhost:5000/products/category/${setSelect}`;
         }
 
         fetch(api)
